@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bindu Yogesh</title>
+<meta name="description" content="Bindu Yogesh, CS undergraduate in Bengaluru. Android, Python and web projects, 250+ LeetCode problems solved, open source contributions. Open to internships.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --surface:#F8FAFC; --line:#E2E8F0;
+  --text:#0F172A; --muted:#64748B; --accent:#4F46E5; --accent-ink:#FFFFFF;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{background:var(--bg);color:var(--text);font:400 1.05rem/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem}
+
+/* top bar */
+header{position:sticky;top:0;z-index:10;background:transparent;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
+header.scrolled{background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom-color:var(--line)}
+main{position:relative}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:4rem}
+.brand{font-weight:700;font-size:1.1rem}
+nav ul{display:flex;gap:1.75rem;list-style:none}
+nav a{color:var(--muted);font-size:.95rem;font-weight:500;transition:color .15s}
+nav a:hover{color:var(--text)}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;font-size:1.2rem;padding:.2rem .65rem;cursor:pointer}
+
+/* hero */
+.hero{padding:6rem 0 4rem}
+.label{color:var(--accent);font-weight:600;font-size:.95rem;margin-bottom:1rem}
+h1{font-weight:700;font-size:clamp(2.3rem,5.5vw,3.8rem);line-height:1.1;letter-spacing:-.02em;max-width:46rem}
+.lead{margin-top:1.5rem;max-width:40rem;color:var(--muted);font-size:1.12rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{display:inline-block;padding:.7rem 1.35rem;border-radius:10px;font-weight:600;font-size:.95rem;border:1px solid var(--line);transition:border-color .15s,background .15s,transform .2s ease-out}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{background:#4338CA;border-color:#4338CA}
+.stats{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.stats b{display:block;font-size:1.9rem;line-height:1.1;font-weight:700}
+.stats span{color:var(--muted);font-size:.9rem}
+
+/* sections */
+section{padding:4.5rem 0;border-top:1px solid var(--line)}
+.eyebrow{color:var(--accent);font-weight:600;font-size:.9rem;margin-bottom:.6rem}
+h2{font-weight:700;font-size:clamp(1.8rem,3.6vw,2.4rem);line-height:1.2;letter-spacing:-.015em}
+.sub{color:var(--muted);margin-top:.6rem;max-width:38rem}
+.head{margin-bottom:2.25rem}
+h3{font-weight:600;font-size:1.1rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem}
+.box h3{margin-bottom:.6rem}
+.box p,.box li{color:var(--muted)}
+.box ul{list-style:none}
+.box li{padding:.3rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chips span{padding:.3rem .8rem;border:1px solid var(--line);border-radius:999px;font-size:.9rem;color:#334155;background:var(--bg)}
+.skills .box h3{margin-bottom:.9rem}
+
+/* project cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.6rem;display:flex;flex-direction:column;transition:border-color .2s,box-shadow .2s,transform .15s ease-out}
+.card:hover{border-color:var(--accent);box-shadow:0 0 0 4px rgba(79,70,229,.09),0 14px 30px -14px rgba(79,70,229,.3)}
+.num{color:var(--muted);font-size:.85rem;font-weight:500;margin-bottom:.9rem}
+.num .dev{color:var(--accent)}
+.card h3{font-size:1.3rem;margin-bottom:.6rem}
+.card p{color:var(--muted);font-size:.98rem;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}
+.tags span{font-size:.8rem;color:var(--accent);border:1px solid rgba(79,70,229,.3);padding:.05rem .6rem;border-radius:6px}
+.links{display:flex;gap:1.25rem;margin-top:1.25rem;font-weight:600;font-size:.93rem}
+.links a:hover{color:var(--accent)}
+.card.wide{grid-column:1/-1}
+
+/* education */
+.edu dl{display:grid;grid-template-columns:8.5rem 1fr;gap:.55rem 1rem}
+.edu dt{color:var(--muted)}
+.edu dd{color:var(--text)}
+
+/* contact */
+.mail{display:inline-block;margin-top:1.5rem;font-weight:600;font-size:clamp(1.1rem,3vw,1.5rem);border-bottom:2px solid var(--accent)}
+.social{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.75rem}
+#contact h2{font-size:clamp(2.2rem,5vw,3.4rem)}
+footer{padding:2rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+/* motion */
+.glow{position:absolute;inset:0 0 auto 0;height:85vh;overflow:hidden;pointer-events:none;z-index:-1}
+.glow::before{content:"";position:absolute;width:44rem;height:44rem;left:50%;top:-14rem;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.2),rgba(99,102,241,0) 65%);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(-30%,0) scale(1)}to{transform:translate(5%,6rem) scale(1.15)}}
+.spot{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,.1),rgba(99,102,241,0) 65%);pointer-events:none;z-index:-1;opacity:0;transition:opacity .4s;will-change:transform}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i,0)*70ms)}
+.js .reveal.in{opacity:1;transform:none}
+.flow{list-style:none;display:flex;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.flow li{position:relative;flex:1;padding-top:1.4rem;font-size:.88rem;color:var(--muted)}
+.flow li::before{content:"";position:absolute;top:0;left:0;width:.7rem;height:.7rem;border-radius:50%;background:var(--accent)}
+.flow li:not(:last-child)::after{content:"";position:absolute;top:.3rem;left:1rem;right:.4rem;height:2px;background:var(--accent);opacity:.35;transform-origin:left}
+.flow li.now{color:var(--text);font-weight:600}
+.flow li.now::before{background:var(--bg);border:2px solid var(--accent);animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,70,229,.45)}100%{box-shadow:0 0 0 .6rem rgba(79,70,229,0)}}
+.js .flow li{opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s;transition-delay:calc(var(--i)*.28s)}
+.js .flow li::after{transform:scaleX(0);transition:transform .5s ease;transition-delay:calc(var(--i)*.28s + .15s)}
+.js .flow.run li{opacity:1;transform:none}
+.js .flow.run li::after{transform:none}
+@media (hover:none){.spot{display:none}}
+
+@media (max-width:760px){
+  .flow{flex-direction:column;gap:.9rem}
+  .flow li{padding:0 0 0 1.6rem}
+  .flow li::before{top:.45rem}
+  .flow li::after{display:none}
+  .menu{display:block}
+  nav{display:none;position:absolute;top:4rem;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:1rem 1.5rem}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:.9rem}
+  .hero{padding-top:3.5rem}
+  .two,.cards{grid-template-columns:1fr}
+  .edu dl{grid-template-columns:1fr;gap:.1rem}
+  .edu dt{margin-top:.7rem}
+  .stats{gap:1.75rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}.rise{animation:none}.glow::before,.flow li.now::before{animation:none}.spot{display:none}}
+</style>
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js")</script>
+</head>
+<body>
+<div class="spot" id="spot" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top">Bindu Yogesh</a>
+    <button class="menu" id="menu" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">&#9776;</button>
+    <nav id="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#open-source">Open source</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap hero">
+    <p class="label rise" style="--d:.05s">Computer Science Student</p>
+    <h1 class="rise" style="--d:.15s">Hi, I'm Bindu. I build software and practise until the hard problems feel routine.</h1>
+    <p class="lead rise" style="--d:.3s">I'm a CS undergraduate at Dayananda Sagar College of Engineering in Bengaluru. I build Android and web projects, solve data structures problems every day, and I'm open to internships.</p>
+    <div class="cta rise" style="--d:.42s">
+      <a class="btn primary" href="#projects">View my projects</a>
+      <a class="btn" href="https://github.com/bindu-yogesh" target="_blank" rel="noopener">GitHub &#8599;</a>
+      <a class="btn" href="https://www.linkedin.com/in/bindu-yogesh-1460a1394" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+    </div>
+    <div class="stats rise" style="--d:.55s" aria-label="Highlights">
+      <div><b data-count="250" data-suffix="+">250+</b><span>LeetCode problems solved</span></div>
+      <div><b data-count="100">100</b><span>day LeetCode streak</span></div>
+      <div><b data-count="9.38">9.38</b><span>GPA</span></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">01 &middot; About</p>
+        <h2>A little about me.</h2>
+      </div>
+      <div class="two">
+        <div class="box">
+          <h3>What I enjoy</h3>
+          <p>Solving problems with C++, Python, Java and Kotlin, and turning ideas into working apps. I like finding patterns in problems, and I built a tracker to show which ones I've covered and where the gaps are.</p>
+        </div>
+        <div class="box">
+          <h3>Beyond the code</h3>
+          <p>I make mandala art, write Kannada kavana (poetry) and sing. Doing both keeps me careful about detail and patient with hard problems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">02 &middot; Skills</p>
+        <h2>What I work with.</h2>
+      </div>
+      <div class="two skills">
+        <div class="box"><h3>Languages</h3><div class="chips"><span>C++</span><span>C</span><span>Java</span><span>Python</span><span>JavaScript</span><span>Kotlin</span></div></div>
+        <div class="box"><h3>Android</h3><div class="chips"><span>Jetpack Compose</span><span>Android SDK</span><span>Room</span><span>WorkManager</span><span>Material 3</span><span>Retrofit</span></div></div>
+        <div class="box"><h3>Web</h3><div class="chips"><span>HTML</span><span>CSS</span></div></div>
+        <div class="box"><h3>Backend and databases</h3><div class="chips"><span>REST APIs</span><span>FastAPI</span><span>PostgreSQL</span></div></div>
+        <div class="box"><h3>Tools</h3><div class="chips"><span>Git</span><span>GitHub</span><span>Android Studio</span><span>VS Code</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">03 &middot; Projects</p>
+        <h2>Things I've built.</h2>
+        <p class="sub">Android apps, web tools and practice projects from my first year.</p>
+      </div>
+      <div class="cards" id="project-list"></div>
+    </div>
+  </section>
+
+  <section id="open-source">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">04 &middot; Open source</p>
+        <h2>Contributing to other people's code.</h2>
+      </div>
+      <article class="card wide">
+        <p class="num">Open source &middot; <span class="dev">Pull request open</span></p>
+        <h3>NexusAI</h3>
+        <p>Addressed an issue with error feedback in the chat interface: backend streaming errors now appear as toast notifications using react-hot-toast, and I improved toast positioning and display duration. I worked on a dedicated branch and submitted the pull request for maintainer review.</p>
+        <div class="tags"><span>TypeScript</span><span>React</span><span>Next.js</span><span>Git</span></div>
+        <ol class="flow" aria-label="Contribution progress">
+          <li style="--i:0">Branch created</li>
+          <li style="--i:1">Changes committed</li>
+          <li style="--i:2">Pull request opened</li>
+          <li class="now" style="--i:3">Awaiting review</li>
+        </ol>
+        <div class="links">
+          <a href="https://github.com/P-r-e-m-i-u-m/NexusAI/pull/61" target="_blank" rel="noopener">View PR #61 &#8599;</a>
+          <a href="https://github.com/P-r-e-m-i-u-m/NexusAI" target="_blank" rel="noopener">Repository &#8599;</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">05 &middot; Education</p>
+        <h2>Where I'm studying.</h2>
+      </div>
+      <div class="two">
+        <div class="box edu">
+          <h3>Education</h3>
+          <dl>
+            <dt>College</dt><dd>Dayananda Sagar College of Engineering</dd>
+            <dt>Degree</dt><dd>B.E., Computer Science and Engineering</dd>
+            <dt>Year</dt><dd>1st year (graduating 2029)</dd>
+            <dt>GPA</dt><dd>9.38</dd>
+            <dt>Pre-university</dt><dd>HKS PU College, PCMB, 95.83% (2025)</dd>
+          </dl>
+        </div>
+        <div class="box">
+          <h3>Certifications</h3>
+          <ul>
+            <li>Be10x: AI Tool Workshop</li>
+            <li>Introduction to Frontend Development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">06 &middot; Contact</p>
+        <h2>Want to connect?</h2>
+        <p class="sub">I'm looking for internships and open to collaborations. Email is the quickest way to reach me.</p>
+      </div>
+      <a class="mail" href="mailto:binduyogesh70199@gmail.com">binduyogesh70199@gmail.com</a>
+      <div class="social">
+        <a class="btn" href="https://www.linkedin.com/in/bindu-yogesh-1460a1394" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+        <a class="btn" href="https://github.com/bindu-yogesh" target="_blank" rel="noopener">GitHub &#8599;</a>
+        <a class="btn" href="https://leetcode.com/u/binduyogesh/" target="_blank" rel="noopener">LeetCode &#8599;</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">&copy; 2026 Bindu Yogesh</div></footer>
+
+<script>
+/* Edit this list to add or change projects. Links are optional. */
+const projects = [
+  {
+    kind: "Web application",
+    name: "LeetCode Pattern Tracker",
+    desc: "Log solved problems, tag each one by pattern, and see which patterns you've covered, where the gaps are, and how long your streak is. Built to make practice deliberate instead of random.",
+    tags: ["JavaScript", "Web app"],
+    code: "https://github.com/bindu-yogesh/leetcode-pattern-tracker-",
+    live: "https://leetcode-pattern-tracker-sable.vercel.app"
+  },
+  {
+    kind: "Android application",
+    name: "LYNK (iTantra)",
+    desc: "A multilingual Android communication app with speech-to-text and text-to-speech in 10 languages. Phones talk directly over Wi-Fi or Bluetooth using socket messaging, with acknowledgements, timeout-based retries and automatic reconnection for reliable delivery. Emergency messages get priority handling.",
+    tags: ["Kotlin", "Android", "STT/TTS", "Sockets"],
+    code: "https://github.com/bindu-yogesh/LYNK"
+  },
+  {
+    kind: "Android application",
+    status: "Under development",
+    name: "Expense Tracker",
+    desc: "An offline-first Android app for managing expenses, budgets, categories and recurring transactions. It uses MVVM with Room and Kotlin Flow for reactive local storage, and includes budget insights, category analytics and visual spending reports.",
+    tags: ["Kotlin", "Jetpack Compose", "Room", "MVVM", "WorkManager"],
+    code: "https://github.com/bindu-yogesh/Expense-Tracker-app"
+  },
+  {
+    kind: "Project",
+    name: "Hand Connect",
+    desc: "Project repository with source code on GitHub.", /* TODO: replace with a one-line description */
+    tags: [],
+    code: "https://github.com/bindu-yogesh/hand-connect-"
+  },
+  {
+    kind: "AI web application",
+    name: "AI Interview Simulator",
+    desc: "Practise mock interviews with AI-generated questions and feedback, so you can rehearse answers and sharpen interview readiness before the real thing.",
+    tags: ["JavaScript", "AI"],
+    live: "https://ai-interview-stimulator-ebon.vercel.app"
+  },
+  {
+    kind: "Web application",
+    name: "Kisan Suvidha",
+    desc: "A responsive web platform that gives farmers simple access to agricultural information and resources, with modules for weather updates and market information. Reusable JavaScript components handle navigation and page elements. Deployed on Vercel.",
+    tags: ["HTML5", "CSS3", "JavaScript"],
+    code: "https://github.com/bindu-yogesh/kisan-suvidha",
+    live: "https://kisan-suvidha.vercel.app"
+  },
+  {
+    kind: "Browser game",
+    name: "Chess Game",
+    desc: "A browser-based chess game with an interactive board and rule-based gameplay, playable straight from the page with no install.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    code: "https://github.com/bindu-yogesh/chessGame",
+    live: "https://chess-game-ten-pi.vercel.app"
+  },
+  {
+    kind: "Web application",
+    name: "Web Drawing App",
+    desc: "A browser drawing tool with an interactive canvas for quick sketches and illustrations, wrapped in a clean, simple interface.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    code: "https://github.com/bindu-yogesh/web-drawing",
+    live: "https://web-drawing-murex.vercel.app"
+  }
+];
+
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const link = (href, label) => `<a href="${href}" target="_blank" rel="noopener">${label} &#8599;</a>`;
+
+document.getElementById("project-list").innerHTML = projects.map((p, i) => `
+  <article class="card">
+    <p class="num">${String(i + 1).padStart(2, "0")} &middot; ${p.status ? `<span class="dev">${esc(p.status)}</span> &middot; ` : ""}${esc(p.kind)}</p>
+    <h3>${esc(p.name)}</h3>
+    <p>${esc(p.desc)}</p>
+    ${p.tags.length ? `<div class="tags">${p.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>` : ""}
+    <div class="links">${p.code ? link(p.code, "GitHub") : ""}${p.live ? link(p.live, "Live") : ""}</div>
+  </article>`).join("");
+
+const menu = document.getElementById("menu"), nav = document.getElementById("nav");
+menu.addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  menu.setAttribute("aria-expanded", open);
+});
+nav.addEventListener("click", e => {
+  if (e.target.tagName === "A") { nav.classList.remove("open"); menu.setAttribute("aria-expanded", false); }
+});
+
+/* motion */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+const header = document.querySelector("header");
+const onScroll = () => header.classList.toggle("scrolled", scrollY > 8);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+if (!reduce) {
+  const countUp = el => {
+    const end = parseFloat(el.dataset.count), dec = (el.dataset.count.split(".")[1] || "").length, suf = el.dataset.suffix || "";
+    const t0 = performance.now(), dur = 1400;
+    const step = now => {
+      const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (end * e).toFixed(dec) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target; io.unobserve(el);
+    if (el.dataset.count) return countUp(el);
+    if (el.classList.contains("flow")) return el.classList.add("run");
+    el.classList.add("in");
+    setTimeout(() => el.classList.remove("reveal", "in"), 1400);
+  }), { threshold: 0.15 });
+
+  document.querySelectorAll("[data-count]").forEach(el => { el.textContent = "0" + (el.dataset.suffix || ""); io.observe(el); });
+  document.querySelectorAll(".flow").forEach(el => io.observe(el));
+  document.querySelectorAll(".head,.box,.card,.mail,.social").forEach(el => {
+    el.style.setProperty("--i", [...el.parentElement.children].indexOf(el) % 4);
+    el.classList.add("reveal"); io.observe(el);
+  });
+
+  if (fine) {
+    document.querySelectorAll(".card").forEach(c => {
+      c.addEventListener("mousemove", e => {
+        const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = `perspective(900px) rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg)`;
+      });
+      c.addEventListener("mouseleave", () => { c.style.transform = ""; });
+    });
+    document.querySelectorAll(".hero .btn").forEach(b => {
+      b.addEventListener("mousemove", e => {
+        const r = b.getBoundingClientRect();
+        b.style.transform = `translate(${(((e.clientX - r.left) / r.width - .5) * 10).toFixed(1)}px,${(((e.clientY - r.top) / r.height - .5) * 8).toFixed(1)}px)`;
+      });
+      b.addEventListener("mouseleave", () => { b.style.transform = ""; });
+    });
+    const spot = document.getElementById("spot");
+    addEventListener("mousemove", e => { spot.style.transform = `translate(${e.clientX}px,${e.clientY}px)`; spot.style.opacity = 1; }, { passive: true });
+  }
+}
+</script>
+</body>
+</html>
