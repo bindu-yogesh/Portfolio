@@ -10,6 +10,7 @@ This portfolio is designed to present my work and technical profile in a
 clean, recruiter-friendly format. It highlights my focus on software
 development, Android development, data structures and algorithms, and
 open-source contributions.
+
 Live Demo : https://bindu-yogesh-portfolio.vercel.app/
 
 ## Features
